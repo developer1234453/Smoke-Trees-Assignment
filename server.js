@@ -4,22 +4,16 @@ const { Sequelize, DataTypes } = require('sequelize');
 
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-
+const PORT = 3000;
 
 
 app.use(bodyParser.json());
 
 //create db
-const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
-  host: process.env.DB_HOST,
+const sequelize = new Sequelize('profile', 'newuser', 'NEW_PASSWORD', {
+  host: 'localhost',
   dialect: 'mysql',
-  port: process.env.DB_PORT || 3000, 
 });
-
 
 //define table like user and address
 const User = sequelize.define('User', {
